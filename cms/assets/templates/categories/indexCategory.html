@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Category List</title>
+  </head>
+  <body class="">
+    <div class="bg-yellow-500  py-4 flex items-center justify-center">
+      <span class="w-20 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+      </span>
+      <a class=" inline-block text-4xl uppercase font-semibold text-white" href="/">Home</a>
+    </div>
+    <div class="flex justify-center py-4">
+      <div class=" w-56 mx-auto bg-yellow-500 rounded-md shadow-2xl">
+        <a class="px-4 py-2 flex items-center justify-center  text-white font-bold text-xl" href="/categories/create">Add Category 
+      <span class="text-white px-2" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd" />
+        </svg>
+      </span>
+      </a>
+        </div>
+    </div>
+       <div class="bg-gray-200 py-4">
+        <ul class="flex justify-evenly items-center border-b border-gray-300">
+          <li class="w-1/6 px-4 py-4 uppercase">Name</li>
+          <li class="w-1/6 px-4 py-4 uppercase">Action</li>
+        </ul>
+      {{ range .Category}}
+
+      <ul class="flex justify-evenly items-center border-b border-gray-300">
+        <li class="w-1/6 px-4 py-4 uppercase">{{.Title}}</li>
+        <li class="w-1/6 px-4 py-4 uppercase">
+          <a class="bg-yellow-500 inline-block px-4 py-2 text-white" href="/categories/{{.ID}}/edit">Edit</a>
+            <a class="bg-red-500 inline-block px-4 py-2 text-white" href="/categories/{{.ID}}/delete">Delete</a>
+        </li>
+      </ul>
+      {{ end }}
+       </div>
+  
+  </body>
+</html>
