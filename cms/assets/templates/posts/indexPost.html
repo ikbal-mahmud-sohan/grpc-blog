@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Post List</title>
+    <style>
+      .ln{
+
+      }
+    </style>
+</head>
+<body class="bg-gray-200">
+  <div class="py-8 flex ">
+    <div class=" w-48 mx-auto bg-yellow-500 rounded-md shadow-2xl">
+      <a class="px-4 py-2 flex items-center justify-center  text-white font-bold text-xl" href="/posts/create">Add Post 
+    <span class="text-white px-2" >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+      </svg>
+  </span>
+</a>
+</div>
+<div class=" w-56 mx-auto bg-yellow-500 rounded-md shadow-2xl">
+  <a class="px-4 py-2 flex items-center justify-center  text-white font-bold text-xl" href="/categories/create">Add Category 
+<span class="text-white px-2" >
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+    <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd" />
+  </svg>
+</span>
+</a>
+  </div>
+<div class=" w-56 mx-auto bg-yellow-500 rounded-md shadow-2xl">
+  <a class="px-4 py-2 flex items-center justify-center  text-white font-bold text-xl" href="/categories">Category List
+
+</a>
+  </div>
+</div>
+
+
+
+ <div class=" bg-gray-200 shadow-2xl container mx-auto">
+  <ul class="flex justify-center">
+    <li class="w-1/6 px-4 py-4 uppercase">Post Name</li>
+    <li class="w-2/6 px-4 py-4 uppercase">Descriptions</li>
+    <li class="w-1/6 px-4 py-4 uppercase">Image</li>
+    <li class="w-1/6 px-4 py-4 uppercase">Category Name</li>
+    <li class="w-1/6 px-4 py-4 uppercase">Action</li>
+  </ul>
+  {{ range .Post}}
+  <ul class="flex justify-center items-center border border-gray-300">
+    <li class="w-1/6 px-4 py-4 capitalize">{{.Title}}</li>
+    
+    <li id="fixedDes" class="w-2/6 px-4 py-4 ln">{{.Description}} <a class="text-blue-400" href="/singlePost/{{.ID}}/view">see more..</a></li>
+    <li class="w-1/6 px-4 py-4 capitalize"><img class="w-48" src="/asset/{{.Image}}" alt="blog"></li>
+    <li class="w-1/6 px-4 py-4 capitalize">{{.CategoryName}}</li>
+    <li class="w-1/6 px-4 py-4 capitalize">
+      <a class="bg-yellow-500 inline-block px-2 py-2 text-white" href="/posts/{{.ID}}/edit">Edit</a>
+      <a class="bg-red-500 inline-block px-2 py-2 text-white" href="/posts/{{.ID}}/delete">Delete</a>
+    </li>
+  </ul>
+ 
+
+{{ end }}
+ </div>
+ 
+ <script>
+   let fixedDes = document.getElementById('fixedDes')
+   fixedDes.fixed(3)
+ </script>
+</body>
+</html>
